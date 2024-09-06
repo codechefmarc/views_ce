@@ -1,0 +1,16 @@
+{
+    "name": "codechefmarc/views_ce",
+    "description": "A simpler Drupal views tool meant for content editors",
+    "type": "drupal-module",
+    "authors": [
+        {
+            "name": "codechefmarc",
+            "email": "marc@fourkitchens.com"
+        },
+        {
+            "name": "dblanken-yale",
+            "email": "david.blankenship@yale.edu"
+        }
+    ],
+    "minimum-stability": "dev"
+}

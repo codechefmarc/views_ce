@@ -1,0 +1,7 @@
+name: 'Views CE'
+type: module
+description: 'Views for Content Editors - a simpler Drupal views tool'
+package: Views
+core_version_requirement: ^10 || ^11
+dependencies:
+  - views

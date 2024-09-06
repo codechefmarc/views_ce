@@ -1,0 +1,12 @@
+views_ce.views_ce_profile.*:
+  type: config_entity
+  label: 'Views CE profile config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    description:
+      type: string

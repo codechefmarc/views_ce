@@ -1,0 +1,5 @@
+entity.views_ce.add_form:
+  route_name: 'entity.views_ce.add_form'
+  title: 'Add Views CE profile'
+  appears_on:
+    - entity.views_ce.collection

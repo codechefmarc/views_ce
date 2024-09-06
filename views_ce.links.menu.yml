@@ -1,0 +1,5 @@
+entity.views_ce.collection:
+  title: 'Views CE Profiles'
+  parent: system.admin_config_content
+  description: 'Views CE profiles'
+  route_name: entity.views_ce.collection

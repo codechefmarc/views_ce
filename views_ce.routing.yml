@@ -1,0 +1,31 @@
+entity.views_ce_profile.collection:
+  path: '/admin/config/content/views_ce'
+  defaults:
+    _entity_list: 'views_ce_profile'
+    _title: 'Views CE profiles'
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.views_ce_profile.add_form:
+  path: '/admin/config/content/views_ce/add'
+  defaults:
+    _entity_form: 'views_ce_profile.add'
+    _title: 'Add Views CE profile'
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.views_ce_profile.edit_form:
+  path: '/admin/config/content/views_ce/{views_ce_profile}'
+  defaults:
+    _entity_form: 'views_ce_profile.edit'
+    _title: 'Edit Views CE profile'
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.views_ce_profile.delete_form:
+  path: '/admin/config/content/views_ce/{views_ce_profile}/delete'
+  defaults:
+    _entity_form: 'views_ce_profile.delete'
+    _title: 'Delete Views CE profile'
+  requirements:
+    _permission: 'administer site configuration'

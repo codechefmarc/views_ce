@@ -5,6 +5,7 @@ namespace Drupal\views_ce\Form;
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\views_ce\ProfileManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -13,13 +14,33 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class FormBase extends EntityForm {
 
   /**
+   * The entity being used by this form.
+   *
+   * @var \Drupal\views_ce\ProfileInterface
+   */
+  protected $entity;
+
+  /**
+   * The views CE profile manager.
+   *
+   * @var \Drupal\views_ce\ProfileManager
+   */
+  protected $profileManager;
+
+  /**
    * Constructs an ExampleForm object.
    *
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entityTypeManager.
+   * @param \Drupal\views_ce $profile_manager
    *   The entityTypeManager.
    */
-  public function __construct(EntityTypeManagerInterface $entityTypeManager) {
-    $this->entityTypeManager = $entityTypeManager;
+  public function __construct(
+    EntityTypeManagerInterface $entity_type_manager,
+    ProfileManager $profile_manager,
+    ) {
+    $this->entityTypeManager = $entity_type_manager;
+    $this->profileManager = $profile_manager;
   }
 
   /**
@@ -27,7 +48,8 @@ class FormBase extends EntityForm {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('entity_type.manager')
+      $container->get('entity_type.manager'),
+      $container->get('views_ce.profile_manager'),
     );
   }
 
@@ -37,24 +59,42 @@ class FormBase extends EntityForm {
   public function form(array $form, FormStateInterface $form_state) {
     $form = parent::form($form, $form_state);
 
-    $example = $this->entity;
-
     $form['label'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Label'),
       '#maxlength' => 255,
-      '#default_value' => $example->label(),
+      '#default_value' => $this->entity->label(),
       '#description' => $this->t("Label for the Example."),
       '#required' => TRUE,
     ];
     $form['id'] = [
       '#type' => 'machine_name',
-      '#default_value' => $example->id(),
+      '#default_value' => $this->entity->id(),
       '#machine_name' => [
         'exists' => [$this, 'exist'],
       ],
-      '#disabled' => !$example->isNew(),
+      '#disabled' => !$this->entity->isNew(),
     ];
+
+    $form['description'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Description'),
+      '#default_value' => $this->entity->get('description'),
+      '#description' => $this->t('The text will be displayed on the <em>profile collection</em> page.'),
+    ];
+
+    $contentEntityTypes = $this->profileManager->getContentEntityTypes();
+    $form['source']['entities'] = [
+      '#type' => 'checkboxes',
+      '#title' => $this->t('Content Entities'),
+      '#options' => $contentEntityTypes,
+      //'#default_value' => array_keys($config->get('entities') ?? []),
+      // '#ajax' => [
+      //   'callback' => '::updateBundleSettings',
+      //   'wrapper' => 'bundle-settings-wrapper',
+      // ],
+    ];
+
 
     // You will need additional form elements for your custom properties.
     return $form;
@@ -64,17 +104,18 @@ class FormBase extends EntityForm {
    * {@inheritdoc}
    */
   public function save(array $form, FormStateInterface $form_state) {
-    $example = $this->entity;
-    $status = $example->save();
+    $profile = $this->entity;
+    $profile->setDescription($form_state->getValue('description'));
+    $status = $profile->save();
 
     if ($status === SAVED_NEW) {
       $this->messenger()->addMessage($this->t('The %label Example created.', [
-        '%label' => $example->label(),
+        '%label' => $profile->label(),
       ]));
     }
     else {
       $this->messenger()->addMessage($this->t('The %label Example updated.', [
-        '%label' => $example->label(),
+        '%label' => $profile->label(),
       ]));
     }
 

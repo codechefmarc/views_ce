@@ -10,3 +10,4 @@ views_ce.views_ce_profile.*:
       label: 'Label'
     description:
       type: string
+      label: 'Description'

@@ -1,0 +1,5 @@
+services:
+  # Service for managing Views CE plugins.
+  views_ce.profile_manager:
+    class: Drupal\views_ce\ProfileManager
+    arguments: ['@entity_type.manager', '@plugin.manager.views.wizard']

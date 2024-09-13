@@ -4,7 +4,7 @@ entity.views_ce_profile.collection:
     _entity_list: 'views_ce_profile'
     _title: 'Views CE profiles'
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'administer views_ce'
 
 entity.views_ce_profile.add_form:
   path: '/admin/config/content/views_ce/add'
@@ -12,7 +12,7 @@ entity.views_ce_profile.add_form:
     _entity_form: 'views_ce_profile.add'
     _title: 'Add Views CE profile'
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'administer views_ce'
 
 entity.views_ce_profile.edit_form:
   path: '/admin/config/content/views_ce/{views_ce_profile}'
@@ -20,7 +20,7 @@ entity.views_ce_profile.edit_form:
     _entity_form: 'views_ce_profile.edit'
     _title: 'Edit Views CE profile'
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'administer views_ce'
 
 entity.views_ce_profile.delete_form:
   path: '/admin/config/content/views_ce/{views_ce_profile}/delete'
@@ -28,4 +28,4 @@ entity.views_ce_profile.delete_form:
     _entity_form: 'views_ce_profile.delete'
     _title: 'Delete Views CE profile'
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'administer views_ce'

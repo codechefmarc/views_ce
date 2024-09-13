@@ -8,5 +8,23 @@ use Drupal\Core\Config\Entity\ConfigEntityInterface;
  * Provides an interface defining an Example entity.
  */
 interface ProfileInterface extends ConfigEntityInterface {
-  // Add get/set methods for your configuration properties here.
+
+  /**
+   * Gets the profile description.
+   *
+   * @return string
+   *   The profile description.
+   */
+  public function getDescription();
+
+  /**
+   * Sets the profile description.
+   *
+   * @param string $description
+   *   The profile description.
+   *
+   * @return $this
+   */
+  public function setDescription($description);
+
 }

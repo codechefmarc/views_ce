@@ -28,7 +28,8 @@ use Drupal\views_ce\ProfileInterface;
  *   },
  *   config_export = {
  *     "id",
- *     "label"
+ *     "label",
+ *     "description",
  *   },
  *   links = {
  *     "edit-form" = "/admin/config/content/views_ce/{views_ce_profile}",
@@ -71,7 +72,7 @@ class Profile extends ConfigEntityBase implements ProfileInterface, EntityWithPl
    * {@inheritdoc}
    */
   public function setDescription($description) {
-    $this->set('description', trim($description));
+    $this->set('description', trim($description) . 'abcd');
     return $this;
   }
 

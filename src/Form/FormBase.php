@@ -64,7 +64,7 @@ class FormBase extends EntityForm {
       '#title' => $this->t('Label'),
       '#maxlength' => 255,
       '#default_value' => $this->entity->label(),
-      '#description' => $this->t("Label for the Example."),
+      '#description' => $this->t("Label for the profile."),
       '#required' => TRUE,
     ];
     $form['id'] = [
@@ -84,19 +84,17 @@ class FormBase extends EntityForm {
     ];
 
     $contentEntityTypes = $this->profileManager->getContentEntityTypes();
-    $form['source']['entities'] = [
+    $form['source']['content_entities'] = [
       '#type' => 'checkboxes',
       '#title' => $this->t('Content Entities'),
       '#options' => $contentEntityTypes,
-      //'#default_value' => array_keys($config->get('entities') ?? []),
+      '#default_value' => $this->entity->get('content_entities') ?? [],
       // '#ajax' => [
       //   'callback' => '::updateBundleSettings',
       //   'wrapper' => 'bundle-settings-wrapper',
       // ],
     ];
 
-
-    // You will need additional form elements for your custom properties.
     return $form;
   }
 

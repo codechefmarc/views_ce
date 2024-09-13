@@ -27,4 +27,22 @@ interface ProfileInterface extends ConfigEntityInterface {
    */
   public function setDescription($description);
 
+  /**
+   * Gets the profile content entities.
+   *
+   * @return array
+   *   An array of content entities.
+   */
+  public function getContentEntities();
+
+  /**
+   * Sets the profile content entities.
+   *
+   * @param string $contentEntities
+   *   An array of content entities.
+   *
+   * @return $this
+   */
+  public function setContentEntities($contentEntities);
+
 }

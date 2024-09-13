@@ -11,3 +11,6 @@ views_ce.views_ce_profile.*:
     description:
       type: string
       label: 'Description'
+    content_entities:
+      type: array
+      label: 'Content entities'

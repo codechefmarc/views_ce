@@ -30,6 +30,7 @@ use Drupal\views_ce\ProfileInterface;
  *     "id",
  *     "label",
  *     "description",
+ *     "content_entities",
  *   },
  *   links = {
  *     "edit-form" = "/admin/config/content/views_ce/{views_ce_profile}",
@@ -72,7 +73,22 @@ class Profile extends ConfigEntityBase implements ProfileInterface, EntityWithPl
    * {@inheritdoc}
    */
   public function setDescription($description) {
-    $this->set('description', trim($description) . 'abcd');
+    $this->set('description', trim($description));
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getContentEntities() {
+    return $this->get('entities');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setContentEntities($contentEntities) {
+    $this->set('content_entities', $contentEntities);
     return $this;
   }
 

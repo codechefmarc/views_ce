@@ -23,7 +23,7 @@ class ProfileDeleteForm extends EntityConfirmFormBase {
    * {@inheritdoc}
    */
   public function getCancelUrl() {
-    return new Url('entity.views_ce.collection');
+    return new Url('entity.views_ce_profile.collection');
   }
 
   /**

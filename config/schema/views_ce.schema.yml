@@ -14,3 +14,6 @@ views_ce.views_ce_profile.*:
     content_entities:
       type: array
       label: 'Content entities'
+    bundles:
+      type: array
+      label: 'Bundles'

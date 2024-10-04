@@ -45,4 +45,22 @@ interface ProfileInterface extends ConfigEntityInterface {
    */
   public function setContentEntities($contentEntities);
 
+  /**
+   * Gets the profile content bundles.
+   *
+   * @return array
+   *   An array of content bundles.
+   */
+  public function getBundles();
+
+  /**
+   * Sets the profile content bundles.
+   *
+   * @param string $bundles
+   *   An array of content bundles.
+   *
+   * @return $this
+   */
+  public function setBundles($bundles);
+
 }

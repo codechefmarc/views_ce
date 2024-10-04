@@ -81,7 +81,7 @@ class Profile extends ConfigEntityBase implements ProfileInterface, EntityWithPl
    * {@inheritdoc}
    */
   public function getContentEntities() {
-    return $this->get('entities');
+    return $this->get('content_entities');
   }
 
   /**
@@ -89,6 +89,21 @@ class Profile extends ConfigEntityBase implements ProfileInterface, EntityWithPl
    */
   public function setContentEntities($contentEntities) {
     $this->set('content_entities', $contentEntities);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getBundles() {
+    return $this->get('bundles');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setBundles($bundles) {
+    $this->set('bundles', $bundles);
     return $this;
   }
 
